@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_todo_app/layout/layout_screen.dart';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenSizeConfiger().init(context); // to get the screen size
     return BlocProvider(
-      create: (context) => NoteTodoCubit(),
+      create: (context) => NoteTodoCubit()..createDatabaseFuction(),
       child: BlocBuilder<NoteTodoCubit, NoteTodoState>(
         builder: (context, state) {
           return MaterialApp(

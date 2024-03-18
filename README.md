@@ -8,3 +8,5 @@ A new Flutter project. For adding notes or make a todo list.
   - intl
   - sqflite
   - flutter_native_splash
+  - conditional_builder_null_safety
+  - image_picker

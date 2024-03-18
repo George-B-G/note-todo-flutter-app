@@ -43,7 +43,8 @@ class LocalDatabase {
         id INTEGER PRIMARY KEY,
         title TEXT,
         description TEXT,
-        image TEXT
+        image TEXT,
+        status TEXT
     )
       ''');
     await batchVariable.commit();

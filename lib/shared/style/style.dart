@@ -4,13 +4,14 @@ import 'package:note_todo_app/shared/components/constant.dart';
 ThemeData buildLightTheme() => ThemeData(
       useMaterial3: true,
       scaffoldBackgroundColor: lightBrownColor,
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: darkBrownColor),
       appBarTheme: AppBarTheme(
         centerTitle: true,
         backgroundColor: darkBrownColor,
         foregroundColor: lightBrownColor,
       ),
       drawerTheme: DrawerThemeData(
-        backgroundColor: midBrownColor,
+        backgroundColor: lightBrownColor,
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: darkBrownColor,
@@ -27,11 +28,15 @@ ThemeData buildLightTheme() => ThemeData(
         thickness: 3,
         color: darkBrownColor,
       ),
-      primaryTextTheme: const TextTheme(
+      primaryTextTheme: TextTheme(
         titleMedium: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+            fontSize: 18, fontWeight: FontWeight.bold, color: darkBrownColor),
       ),
       dialogTheme: DialogTheme(backgroundColor: lightBrownColor),
+      checkboxTheme: CheckboxThemeData(
+        fillColor: MaterialStatePropertyAll(lightBrownColor),
+        checkColor: MaterialStatePropertyAll(darkBrownColor),
+      ),
     );
 
 ThemeData buildDarkTheme() => ThemeData(
