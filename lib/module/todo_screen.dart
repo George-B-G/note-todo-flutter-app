@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:note_todo_app/shared/components/components.dart';
-import 'package:note_todo_app/shared/components/constant.dart';
 import 'package:note_todo_app/shared/cubit/cubit.dart';
 import 'package:note_todo_app/shared/cubit/state.dart';
 
@@ -56,7 +54,7 @@ class TodoScreen extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                verticalSpace(heightValue: 3.5),
+                                verticalSpace(heightValue: 3),
                                 defaultTextFormField(
                                     textEditingController: titleController,
                                     hintTextValue: 'Title'),

@@ -59,7 +59,7 @@ Widget buildCustomListview({
     ConditionalBuilder(
       condition: lst.isNotEmpty,
       fallback: (context) => const Center(
-        child: CircularProgressIndicator(),
+        child: Text('Try adding a new note or something todo'),
       ),
       builder: (context) => ListView.builder(
         itemCount: lengthLst,
@@ -74,13 +74,14 @@ Widget buildItem({
   required String textSubtitle,
   required String tableName,
   required String status,
-  String? image,
+  File? image,
   bool isTodo = false,
   bool checkboxValue = false,
   Function? onchangeValue,
 }) {
-  String img =
-      image != null && image.isNotEmpty ? image : 'assets/images/splash.png';
+  dynamic img = image == null || image.path.isEmpty
+      ? const AssetImage('assets/images/splash.png')
+      : FileImage(image);
   return Card(
     color: darkBrownColor,
     margin: const EdgeInsets.all(10),
@@ -91,11 +92,13 @@ Widget buildItem({
               onChanged: (value) => onchangeValue!(value) ?? (value) {},
               visualDensity: VisualDensity.compact,
             )
-          : Image.asset(
-              img,
-              fit: BoxFit.cover,
-              height: 30,
-              width: 30,
+          : SizedBox(
+              width: 50,
+              height: 50,
+              child: Image(
+                image: img,
+                fit: BoxFit.cover,
+              ),
             ),
       title: Text(
         textTitle,

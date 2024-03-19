@@ -40,15 +40,15 @@ class NoteScreen extends StatelessWidget {
                   actions: [
                     IconButton(
                         onPressed: () {
-                          cubit.imageURL = '';
                           if (formKey.currentState!.validate()) {
                             cubit
                                 .insertInDatabaseFuction(
                                     tableName: 'notes',
                                     noteTitle: titleController.text,
                                     noteDescription: descriptionController.text,
-                                    image: cubit.imageURL ?? '')
+                                    image: cubit.imgPath)
                                 .then((value) {
+                              cubit.imgPath = '';
                               cubit.changeTodoFloatingActionButton(
                                   isPressed: false);
                               Navigator.pop(context);

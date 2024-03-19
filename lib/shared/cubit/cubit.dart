@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_todo_app/module/note_archive.dart';
@@ -18,8 +16,12 @@ class NoteTodoCubit extends Cubit<NoteTodoState> {
   static NoteTodoCubit get(context) => BlocProvider.of(context);
 
   int noteCurrentIndex = 0, todoCurrentIndex = 0;
-  List<Widget> noteScreens = [NoteMenu(), NoteArchive()];
-  List<Widget> todoScreens = [TodoMenu(), TodoArchive(), TodoDone()];
+  List<Widget> noteScreens = [const NoteMenu(), const NoteArchive()];
+  List<Widget> todoScreens = [
+    const TodoMenu(),
+    const TodoArchive(),
+    const TodoDone()
+  ];
   void changeNoteIndex(int index) {
     noteCurrentIndex = index;
     emit(ChangeNoteCurrentIndexState());
@@ -216,7 +218,7 @@ class NoteTodoCubit extends Cubit<NoteTodoState> {
     emit(ChangeCheckboxValueState());
   }
 
-  String? imageURL;
+  String imgPath = '';
   getImage({
     required bool isCameraPhoto,
   }) async {
@@ -225,18 +227,18 @@ class NoteTodoCubit extends Cubit<NoteTodoState> {
     if (isCameraPhoto == false) {
       XFile? imageGallery = await picker.pickImage(source: ImageSource.gallery);
       if (imageGallery != null) {
-        imageURL = basename(imageGallery.path);
+        imgPath = imageGallery.path;
         emit(ImagePickerSuccessState());
       } else {
-        imageURL = '';
+        imgPath = '';
       }
     } else if (isCameraPhoto == true) {
       XFile? photoCamera = await picker.pickImage(source: ImageSource.camera);
       if (photoCamera != null) {
-        imageURL = basename(photoCamera.path);
+        imgPath = photoCamera.path;
         emit(ImagePickerSuccessState());
       } else {
-        imageURL = '';
+        imgPath = '';
       }
     }
   }

@@ -22,7 +22,7 @@ class NoteArchive extends StatelessWidget {
             textTitle: cubit.noteArchiveLst[index]['title'],
             textSubtitle: cubit.noteArchiveLst[index]['description'],
             id: cubit.noteArchiveLst[index]['id'],
-            image: cubit.noteLst[index]['image'],
+            image: File(cubit.noteArchiveLst[index]['image']),
             status: "all",
             tableName: "notes",
             context: context,

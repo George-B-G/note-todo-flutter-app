@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +45,7 @@ class LayoutScreen extends StatelessWidget {
                 ListTile(
                   title: const Text('Settings'),
                   onTap: () => pushToPage(
-                      context: context, screenWidget: SettingScreen()),
+                      context: context, screenWidget: const SettingScreen()),
                 ),
               ],
             ),
@@ -64,6 +66,7 @@ class LayoutScreen extends StatelessWidget {
                       textTitle: cubit.noteLst[index]['title'],
                       textSubtitle: cubit.noteLst[index]['description'],
                       id: cubit.noteLst[index]['id'],
+                      image: File(cubit.noteLst[index]['image']),
                       status: "archive",
                       tableName: "notes",
                       context: context,
@@ -79,6 +82,7 @@ class LayoutScreen extends StatelessWidget {
                       textTitle: cubit.noteArchiveLst[index]['title'],
                       textSubtitle: cubit.noteArchiveLst[index]['description'],
                       id: cubit.noteArchiveLst[index]['id'],
+                      image: File(cubit.noteArchiveLst[index]['image']),
                       status: "all",
                       tableName: "notes",
                       context: context,

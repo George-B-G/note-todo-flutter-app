@@ -22,11 +22,12 @@ class NoteMenu extends StatelessWidget {
             textTitle: cubit.noteLst[index]['title'],
             textSubtitle: cubit.noteLst[index]['description'],
             id: cubit.noteLst[index]['id'],
-            image: cubit.noteLst[index]['image'],
+            image: File(cubit.noteLst[index]['image']),
             status: "archive",
             tableName: "notes",
             context: context,
           ),
+          // File: '/data/user/0/com.example.note_todo_app/cache/ec78a8fb-048a-4cdd-bd50-2f512c245702/wallpaperflare.com_wallpaper.jpg'
         );
       },
     );
