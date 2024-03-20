@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +44,7 @@ class LayoutScreen extends StatelessWidget {
                 ListTile(
                   title: const Text('Settings'),
                   onTap: () => pushToPage(
-                      context: context, screenWidget: const SettingScreen()),
+                      context: context, screenWidget:  SettingScreen()),
                 ),
               ],
             ),
@@ -60,7 +59,7 @@ class LayoutScreen extends StatelessWidget {
                 children: [
                   verticalSpace(heightValue: 1),
                   screenSeparator(title: 'Notes', number: cubit.noteLst.length),
-                  _buildListViewSeparator(
+                  buildListViewSeparator(
                     count: cubit.noteLst.length,
                     itemBuilderVal: (context, index) => buildItem(
                       textTitle: cubit.noteLst[index]['title'],
@@ -76,7 +75,7 @@ class LayoutScreen extends StatelessWidget {
                   screenSeparator(
                       title: 'Notes Archive',
                       number: cubit.noteArchiveLst.length),
-                  _buildListViewSeparator(
+                  buildListViewSeparator(
                     count: cubit.noteArchiveLst.length,
                     itemBuilderVal: (context, index) => buildItem(
                       textTitle: cubit.noteArchiveLst[index]['title'],
@@ -91,7 +90,7 @@ class LayoutScreen extends StatelessWidget {
                   verticalSpace(heightValue: 1),
                   screenSeparator(
                       title: 'Todo Tasks', number: cubit.todoTasksLst.length),
-                  _buildListViewSeparator(
+                  buildListViewSeparator(
                     count: cubit.todoTasksLst.length,
                     itemBuilderVal: (context, index) => buildItem(
                       context: context,
@@ -112,7 +111,7 @@ class LayoutScreen extends StatelessWidget {
                   verticalSpace(heightValue: 1),
                   screenSeparator(
                       title: 'Todo Done', number: cubit.todoDoneLst.length),
-                  _buildListViewSeparator(
+                  buildListViewSeparator(
                     count: cubit.todoDoneLst.length,
                     itemBuilderVal: (context, index) => buildItem(
                       context: context,
@@ -134,7 +133,7 @@ class LayoutScreen extends StatelessWidget {
                   screenSeparator(
                       title: 'Todo Archive',
                       number: cubit.todoArchiveLst.length),
-                  _buildListViewSeparator(
+                  buildListViewSeparator(
                     count: cubit.todoArchiveLst.length,
                     itemBuilderVal: (context, index) => buildItem(
                       context: context,
@@ -160,17 +159,4 @@ class LayoutScreen extends StatelessWidget {
       },
     );
   }
-
-  Widget _buildListViewSeparator({
-    required int count,
-    required Widget? Function(BuildContext, int) itemBuilderVal,
-    ScrollPhysics scrollPhysics = const NeverScrollableScrollPhysics(),
-  }) =>
-      ListView.separated(
-        shrinkWrap: true,
-        physics: scrollPhysics,
-        separatorBuilder: (context, index) => const Divider(),
-        itemCount: count,
-        itemBuilder: itemBuilderVal,
-      );
 }

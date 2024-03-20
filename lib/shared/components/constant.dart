@@ -14,3 +14,5 @@ Color darkBrownColor = const Color(0xffCB997E);
 Color darkThemeFontColor = const Color(0xffe4c5b6);
 Color darkThemeBackgroundColor = const Color(0xff221e1c);
 Color darkThemeForegroundColor = const Color(0xff373331);
+
+ThemeMode themeMode = ThemeMode.system;

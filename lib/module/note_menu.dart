@@ -27,7 +27,6 @@ class NoteMenu extends StatelessWidget {
             tableName: "notes",
             context: context,
           ),
-          // File: '/data/user/0/com.example.note_todo_app/cache/ec78a8fb-048a-4cdd-bd50-2f512c245702/wallpaperflare.com_wallpaper.jpg'
         );
       },
     );

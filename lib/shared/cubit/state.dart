@@ -27,3 +27,5 @@ class ChangeCheckboxValueState extends NoteTodoState {}
 class ImagePickerSuccessState extends NoteTodoState {}
 
 class ImagePickerLoadingState extends NoteTodoState {}
+
+class ChangeThemeModeState extends NoteTodoState {}

@@ -242,4 +242,31 @@ class NoteTodoCubit extends Cubit<NoteTodoState> {
       }
     }
   }
+
+  String groupValue = 'System';
+  List<Map> themes = [
+    {
+      'name': 'System theme',
+      'value': 'System',
+    },
+    {
+      'name': 'Light theme',
+      'value': 'Light',
+    },
+    {
+      'name': 'Dark theme',
+      'value': 'Dark',
+    },
+  ];
+  void changeThemeMode(String val) {
+    groupValue = val;
+    if (val == 'System') {
+      themeMode = ThemeMode.system;
+    } else if (val == 'Light') {
+      themeMode = ThemeMode.light;
+    } else {
+      themeMode = ThemeMode.dark;
+    }
+    emit(ChangeThemeModeState());
+  }
 }

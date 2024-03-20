@@ -13,6 +13,13 @@ ThemeData buildLightTheme() => ThemeData(
       drawerTheme: DrawerThemeData(
         backgroundColor: lightBrownColor,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(darkBrownColor),
+          iconColor: MaterialStatePropertyAll(lightBrownColor),
+          foregroundColor: MaterialStatePropertyAll(lightBrownColor),
+        ),
+      ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: darkBrownColor,
         type: BottomNavigationBarType.fixed,
@@ -37,6 +44,8 @@ ThemeData buildLightTheme() => ThemeData(
         fillColor: MaterialStatePropertyAll(lightBrownColor),
         checkColor: MaterialStatePropertyAll(darkBrownColor),
       ),
+      radioTheme:
+          RadioThemeData(fillColor: MaterialStatePropertyAll(darkBrownColor)),
     );
 
 ThemeData buildDarkTheme() => ThemeData(
@@ -77,5 +86,14 @@ ThemeData buildDarkTheme() => ThemeData(
         thickness: 3,
         color: darkThemeBackgroundColor,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(darkThemeFontColor),
+          iconColor: MaterialStatePropertyAll(darkThemeBackgroundColor),
+          foregroundColor: MaterialStatePropertyAll(darkThemeBackgroundColor),
+        ),
+      ),
       dialogTheme: DialogTheme(backgroundColor: darkThemeBackgroundColor),
+      radioTheme: RadioThemeData(
+          fillColor: MaterialStatePropertyAll(darkThemeFontColor)),
     );

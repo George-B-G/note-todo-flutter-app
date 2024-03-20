@@ -139,7 +139,7 @@ Widget buildItem({
 
 Widget screenSeparator({
   required String title,
-  required int number,
+  int? number,
 }) =>
     Container(
       height: 35,
@@ -147,8 +147,21 @@ Widget screenSeparator({
       padding: const EdgeInsets.only(top: 5.5, left: 10),
       color: midBrownColor,
       child: Text(
-        '$number $title',
+        number == null ? title : '$number $title',
         style:
             const TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
       ),
+    );
+
+Widget buildListViewSeparator({
+  required int count,
+  required Widget? Function(BuildContext, int) itemBuilderVal,
+  ScrollPhysics scrollPhysics = const NeverScrollableScrollPhysics(),
+}) =>
+    ListView.separated(
+      shrinkWrap: true,
+      physics: scrollPhysics,
+      separatorBuilder: (context, index) => const Divider(),
+      itemCount: count,
+      itemBuilder: itemBuilderVal,
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_todo_app/layout/layout_screen.dart';
+import 'package:note_todo_app/shared/components/constant.dart';
 import 'package:note_todo_app/shared/cubit/bloc_observer.dart';
 import 'package:note_todo_app/shared/cubit/cubit.dart';
 import 'package:note_todo_app/shared/cubit/state.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Note and Todo',
-            themeMode: ThemeMode.system,
+            themeMode: themeMode,
             theme: buildLightTheme(),
             darkTheme: buildDarkTheme(),
             home: const LayoutScreen(),
