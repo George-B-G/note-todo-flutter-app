@@ -77,6 +77,7 @@ Widget buildItem({
   File? image,
   bool isTodo = false,
   bool checkboxValue = false,
+  Function? longPress, 
   Function? onchangeValue,
 }) {
   dynamic img = image == null || image.path.isEmpty
@@ -86,6 +87,7 @@ Widget buildItem({
     color: darkBrownColor,
     margin: const EdgeInsets.all(10),
     child: ListTile(
+      onLongPress: () => longPress == null ? null : longPress(),
       leading: isTodo
           ? Checkbox(
               value: checkboxValue,

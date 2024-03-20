@@ -161,6 +161,32 @@ class NoteTodoCubit extends Cubit<NoteTodoState> {
     });
   }
 
+  void updateEditingNoteFunction({
+    required String tableName,
+    required String status,
+    required String title,
+    required String description,
+    required String image,
+    required int id,
+  }) async {
+    await localDatabase
+        .updateData(
+            'UPDATE notes SET title="$title", description="$description", image="$image", status="$status" WHERE id=$id')
+        .then((value) {
+      getDataFunction('SELECT * FROM notes WHERE status="all"').then((value) {
+        noteLst = value;
+        emit(SelectDataState());
+      });
+      getDataFunction('SELECT * FROM notes WHERE status="archive"')
+          .then((value) {
+        noteArchiveLst = value;
+        emit(SelectDataState());
+      });
+      imgPath = '';
+      emit(UpdateNoteDataState());
+    });
+  }
+
   void deleteDataFunction({
     required int id,
     required String tableName,

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_todo_app/module/edit_screen.dart';
 import 'package:note_todo_app/module/note_screen.dart';
 import 'package:note_todo_app/module/settings_screen.dart';
 import 'package:note_todo_app/module/todo_screen.dart';
@@ -44,7 +45,7 @@ class LayoutScreen extends StatelessWidget {
                 ListTile(
                   title: const Text('Settings'),
                   onTap: () => pushToPage(
-                      context: context, screenWidget:  SettingScreen()),
+                      context: context, screenWidget: SettingScreen()),
                 ),
               ],
             ),
@@ -69,6 +70,16 @@ class LayoutScreen extends StatelessWidget {
                       status: "archive",
                       tableName: "notes",
                       context: context,
+                      longPress: () => pushToPage(
+                          context: context,
+                          screenWidget: EditScreen(
+                            key: key,
+                            noteId: cubit.noteLst[index]['id'],
+                            noteStatus: cubit.noteLst[index]['status'],
+                            title: cubit.noteLst[index]['title'],
+                            description: cubit.noteLst[index]['description'],
+                            image: File(cubit.noteLst[index]['image']),
+                          )),
                     ),
                   ),
                   verticalSpace(heightValue: 1),
@@ -85,6 +96,17 @@ class LayoutScreen extends StatelessWidget {
                       status: "all",
                       tableName: "notes",
                       context: context,
+                      longPress: () => pushToPage(
+                          context: context,
+                          screenWidget: EditScreen(
+                            key: key,
+                            noteId: cubit.noteArchiveLst[index]['id'],
+                            noteStatus: cubit.noteArchiveLst[index]['status'],
+                            title: cubit.noteArchiveLst[index]['title'],
+                            description: cubit.noteArchiveLst[index]
+                                ['description'],
+                            image: File(cubit.noteArchiveLst[index]['image']),
+                          )),
                     ),
                   ),
                   verticalSpace(heightValue: 1),

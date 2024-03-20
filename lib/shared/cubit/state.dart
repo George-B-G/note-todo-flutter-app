@@ -29,3 +29,5 @@ class ImagePickerSuccessState extends NoteTodoState {}
 class ImagePickerLoadingState extends NoteTodoState {}
 
 class ChangeThemeModeState extends NoteTodoState {}
+
+class UpdateNoteDataState extends NoteTodoState {}
